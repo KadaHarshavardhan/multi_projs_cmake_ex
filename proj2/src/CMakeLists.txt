@@ -1,0 +1,25 @@
+set(PROJ proj2)
+set(BIN bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/cmake/${PROJ}/${BIN}")
+
+set(SOURCES
+    main.c
+    add.c
+)
+
+
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/../inc
+)
+
+file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/cmake/${PROJ}/${BIN})
+message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+message(STATUS "CMAKE_RUNTIME_OUTPUT_DIRECTORY: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+
+
+add_executable(${PROJ}
+    ${SOURCES}
+)
+
+
+install(TARGETS ${PROJ} RUNTIME DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
